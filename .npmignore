@@ -1,0 +1,9 @@
+/src
+/example
+/bin/*
+!/bin/.gitkeep
+/.vsts
+/.vscode
+/bazel-*
+/BUILD.bazel
+/WORKSPACE
