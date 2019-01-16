@@ -1,0 +1,15 @@
+steps:
+
+- script: choco install bazel || exit 0
+  workingDirectory: $(Build.SourcesDirectory)
+
+- script: bazel build :protoc-gen-strict -c opt && copy .\bazel-out\x64_windows-opt\bin\protoc-gen-strict.exe .\bin\protoc-gen-strict-win32.exe
+  workingDirectory: $(Build.SourcesDirectory)
+
+# Basic test
+- script: .\bin\protoc-gen-strict-win32.exe
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.SourcesDirectory)/bin/protoc-gen-strict-win32.exe
+    artifactName: protoc-gen-strict-win32

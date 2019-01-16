@@ -1,0 +1,20 @@
+steps:
+
+- script: sudo xcodebuild -license accept
+  workingDirectory: $(Build.SourcesDirectory)
+- script: curl -L -o ./bazel-installer.sh https://github.com/bazelbuild/bazel/releases/download/0.17.2/bazel-0.17.2-installer-darwin-x86_64.sh 
+  workingDirectory: $(Build.SourcesDirectory)
+
+- script: chmod +x ./bazel-installer.sh && ./bazel-installer.sh --user
+  workingDirectory: $(Build.SourcesDirectory)
+
+- script: bazel build :protoc-gen-strict -c opt && cp ./bazel-out/darwin-opt/bin/protoc-gen-strict ./bin/protoc-gen-strict-darwin
+  workingDirectory: $(Build.SourcesDirectory)
+
+# Basic test
+- script: ./bin/protoc-gen-strict-darwin --dummy-option
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.SourcesDirectory)/bin/protoc-gen-strict-darwin
+    artifactName: protoc-gen-strict-darwin 
