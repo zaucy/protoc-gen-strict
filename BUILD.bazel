@@ -1,0 +1,25 @@
+cc_binary(
+	name = "protoc-gen-strict",
+	srcs = [
+		"src/generator.cc",
+		"src/strict-generator-options.cc",
+		"src/strict-generator-options.hh",
+		"src/strict-generator.cc",
+		"src/strict-generator.hh",
+	],
+	deps = [
+		"@com_google_protobuf//:protoc_lib",
+		":cc_proto_strict",
+	],
+)
+
+cc_proto_library(
+	name = "cc_proto_strict",
+	deps = [":proto_strict"],
+)
+
+proto_library(
+	name = "proto_strict",
+	srcs = ["strict.proto"],
+	deps = ["@com_google_protobuf//:descriptor_proto"],
+)

@@ -1,0 +1,4 @@
+srcs_dir: ./src
+srcs: ['example.proto']
+include: ['../']
+output: {strict: './'}

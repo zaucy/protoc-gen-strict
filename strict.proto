@@ -1,0 +1,23 @@
+syntax = "proto2";
+
+import "google/protobuf/descriptor.proto";
+
+package strict;
+
+message StrictFieldsOptions {
+	
+	// The target message name to use for constraints.
+	required string message = 1;
+
+	// If true and a field does not exist on the constrained message it will be 
+	// ignored. Otherwise field names must exist on the constrained message.
+	// Defaults to `false`.
+	optional bool partial = 2;
+
+	// Field numbers are constrained to the target message.
+	optional bool binary_compatible = 3;
+}
+
+extend google.protobuf.MessageOptions {
+	optional StrictFieldsOptions fields = 50000;
+}

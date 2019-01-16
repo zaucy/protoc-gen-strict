@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "strict.proto";
+
+package example.strict;
+
+message ExampleTargetMessage {
+  string example = 1;
+}
+
+message ExampleConstrainedMessage {
+  string example = 1;
+
+  option (.strict.fields) = {
+    message: "ExampleTargetMessage"
+    binary_compatible: true
+  };
+}
