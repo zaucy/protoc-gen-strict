@@ -1,0 +1,26 @@
+{
+  "name": "protoc-gen-strict",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaucy/protoc-gen-strict.git"
+  },
+  "author": "Ezekiel Warren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaucy/protoc-gen-strict/issues"
+  },
+  "homepage": "https://github.com/zaucy/protoc-gen-strict#readme",
+  "dependencies": {
+    "download": "^7.1.0",
+    "fs-extra": "^7.0.1"
+  }
+}
