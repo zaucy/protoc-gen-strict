@@ -1,8 +1,11 @@
 {
   "name": "protoc-gen-strict",
-  "version": "0.0.1-0",
+  "version": "0.0.1-1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "protoc-gen-strict": "./cli.js"
+  },
   "directories": {
     "example": "example"
   },
